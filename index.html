@@ -434,7 +434,7 @@
               </div>
               <div>
                 <label for="secondsPerQuestion">Default Seconds Per Question</label>
-                <input id="secondsPerQuestion" type="number" min="3" max="60" value="20" />
+                <input id="secondsPerQuestion" type="number" min="3" max="60" value="60" />
               </div>
               <div>
                 <label for="questionCount">Number of Questions</label>
@@ -504,7 +504,7 @@
                 <div class="tag" id="topicTag">Topic</div>
                 <p class="small-note" id="questionCounter">Question 1 / 10</p>
               </div>
-              <div id="timerBox" class="timer-box">10s</div>
+              <div id="timerBox" class="timer-box">60s</div>
             </div>
             <div class="progress-wrap">
               <div id="progressBar" class="progress-bar"></div>
@@ -545,7 +545,7 @@
     let allQuestions = [];
     let gameQuestions = [];
     let currentIndex = 0;
-    let timeLeft = 10;
+    let timeLeft = 60;
     let currentMaxSeconds = 60;
     let timer = null;
     let results = [];
@@ -712,9 +712,12 @@
     }
 
     function getDefaultSeconds() {
-      const value = Number(document.getElementById("secondsPerQuestion").value);
-      if (!Number.isFinite(value) || value < 3) return 10;
-      return Math.min(60, value);
+      const raw = document.getElementById("secondsPerQuestion").value;
+      const value = parseInt(raw, 10);
+      if (Number.isNaN(value)) return 60;
+      // clamp between 3 and 600 (allow larger if needed), but UI limits to 60
+      const clamped = Math.max(3, Math.min(600, value));
+      return clamped;
     }
 
     function startGame() {
@@ -743,7 +746,8 @@
 
       const q = gameQuestions[currentIndex];
       const defaultSeconds = getDefaultSeconds();
-      timeLeft = q.timeLimitSeconds || defaultSeconds;
+      currentMaxSeconds = q.timeLimitSeconds || defaultSeconds;
+      timeLeft = currentMaxSeconds;
 
       document.getElementById("questionText").textContent = q.questionText;
       document.getElementById("topicTag").textContent = q.topic;
@@ -813,10 +817,8 @@
     }
 
     function updateTimerDisplay() {
-      const q = gameQuestions[currentIndex];
-      const defaultSeconds = getDefaultSeconds();
-      const maxSeconds = q && (q.timeLimitSeconds || defaultSeconds);
       const timerBox = document.getElementById("timerBox");
+      const maxSeconds = currentMaxSeconds || getDefaultSeconds();
       timerBox.textContent = timeLeft + "s";
       timerBox.classList.toggle("danger", timeLeft <= 3);
       document.getElementById("progressBar").style.width = Math.max(0, (timeLeft / maxSeconds) * 100) + "%";
