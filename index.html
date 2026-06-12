@@ -12,7 +12,6 @@
       --accent: #f59e0b;
       --success: #16a34a;
       --danger: #dc2626;
-      --bg: #f8fafc;
       --card: #ffffff;
       --text: #0f172a;
       --muted: #64748b;
@@ -30,7 +29,23 @@
       color: var(--text);
     }
 
+    body::before {
+      content: "🐾 🐾 🐾 🐾 🐾 🐾 🐾 🐾 🐾 🐾 🐾 🐾";
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      font-size: 48px;
+      line-height: 120px;
+      letter-spacing: 60px;
+      color: rgba(37,99,235,0.04);
+      pointer-events: none;
+      z-index: 0;
+      word-break: break-all;
+      overflow: hidden;
+    }
+
     .container {
+      position: relative;
+      z-index: 1;
       width: min(1100px, calc(100% - 32px));
       margin: 0 auto;
       padding: 32px 0;
@@ -61,24 +76,26 @@
       background: #dbeafe;
       color: #1e40af;
     }
-
     .tag.secondary { background: #fef3c7; color: #92400e; }
 
     h1 {
       margin: 0;
-      font-size: clamp(32px, 5vw, 54px);
-      letter-spacing: -1.5px;
+      font-size: clamp(26px, 4.5vw, 48px);
+      letter-spacing: -1px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
     }
 
     .subtitle {
       color: var(--muted);
-      font-size: 18px;
+      font-size: 17px;
       margin: 10px 0 0;
       line-height: 1.5;
     }
 
     .card {
-      background: rgba(255,255,255,0.92);
+      background: rgba(255,255,255,0.93);
       border: 1px solid var(--border);
       border-radius: 28px;
       box-shadow: var(--shadow);
@@ -135,19 +152,13 @@
       cursor: pointer;
       transition: transform 0.15s ease, opacity 0.15s ease, background 0.15s ease;
     }
-
-    button:hover { transform: translateY(-1px); }
-
-    button:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-      transform: none;
-    }
+    button:hover { transform: translateY(-2px); }
+    button:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 
     .btn-primary { background: var(--primary); color: #fff; }
     .btn-primary:hover { background: var(--primary-dark); }
-    .btn-accent { background: var(--accent); color: #111827; }
-    .btn-light { background: #e2e8f0; color: #0f172a; }
+    .btn-accent  { background: var(--accent); color: #111827; }
+    .btn-light   { background: #e2e8f0; color: #0f172a; }
 
     .side-panel {
       background: #0f172a;
@@ -156,7 +167,6 @@
       padding: 22px;
       min-height: 100%;
     }
-
     .side-panel p { color: #cbd5e1; line-height: 1.6; margin-top: 10px; }
 
     .mini-stats {
@@ -165,7 +175,6 @@
       gap: 12px;
       margin: 18px 0;
     }
-
     .mini-stat {
       background: rgba(255,255,255,0.1);
       border-radius: 18px;
@@ -200,7 +209,6 @@
       font-size: 24px;
       font-weight: 900;
     }
-
     .timer-box.danger {
       background: #fee2e2;
       color: var(--danger);
@@ -209,8 +217,29 @@
 
     @keyframes pulse {
       from { transform: scale(1); }
-      to   { transform: scale(1.04); }
+      to   { transform: scale(1.05); }
     }
+    @keyframes bearBounce {
+      0%,100% { transform: translateY(0) rotate(0deg); }
+      30%     { transform: translateY(-12px) rotate(-5deg); }
+      60%     { transform: translateY(-6px) rotate(4deg); }
+    }
+    @keyframes bearShake {
+      0%,100% { transform: rotate(0deg); }
+      15%     { transform: rotate(-10deg); }
+      35%     { transform: rotate(10deg); }
+      55%     { transform: rotate(-7deg); }
+      75%     { transform: rotate(7deg); }
+    }
+    @keyframes bearPop {
+      0%   { transform: scale(0.5); opacity: 0; }
+      70%  { transform: scale(1.15); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .bear-bounce { animation: bearBounce 0.65s ease forwards; }
+    .bear-shake  { animation: bearShake  0.55s ease forwards; }
+    .bear-pop    { animation: bearPop    0.45s ease forwards; }
 
     .progress-wrap {
       width: 100%;
@@ -220,7 +249,6 @@
       overflow: hidden;
       margin-bottom: 26px;
     }
-
     .progress-bar {
       height: 100%;
       width: 100%;
@@ -229,21 +257,31 @@
     }
 
     .question-box {
-      min-height: 210px;
+      min-height: 220px;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
       border-radius: 28px;
       background: linear-gradient(135deg, #dbeafe, #fef3c7);
-      padding: 28px;
+      padding: 28px 28px 42px;
       margin-bottom: 22px;
+      position: relative;
     }
 
     .question-text {
-      font-size: clamp(34px, 6vw, 68px);
+      font-size: clamp(32px, 6vw, 66px);
       font-weight: 900;
       line-height: 1.15;
+    }
+
+    .corner-bear {
+      position: absolute;
+      bottom: 6px;
+      right: 16px;
+      font-size: 34px;
+      line-height: 1;
+      transition: all 0.2s;
     }
 
     .answer-row { display: flex; gap: 12px; }
@@ -256,30 +294,41 @@
 
     .feedback {
       margin-top: 18px;
-      padding: 16px;
+      padding: 14px 18px;
       border-radius: 20px;
-      font-weight: 800;
-      line-height: 1.5;
+      font-weight: 700;
+      line-height: 1.6;
       display: none;
+      align-items: center;
+      gap: 16px;
     }
-
-    .feedback.show  { display: block; }
+    .feedback.show    { display: flex; }
     .feedback.correct { background: #dcfce7; color: #166534; }
     .feedback.wrong   { background: #fee2e2; color: #991b1b; }
+    .feedback-bear    { font-size: 50px; flex-shrink: 0; }
 
     .score-card { text-align: center; }
-
+    .score-bear {
+      font-size: 72px;
+      display: block;
+      margin-bottom: 4px;
+      line-height: 1;
+    }
     .score-number {
       font-size: 48px;
       font-weight: 900;
       color: var(--primary);
-      margin: 10px 0;
+      margin: 8px 0;
     }
-
     .small-note { font-size: 13px; color: var(--muted); line-height: 1.5; }
 
+    .summary-banner {
+      text-align: center;
+      font-size: 64px;
+      margin: 6px 0 14px;
+      line-height: 1;
+    }
     .summary-list { display: grid; gap: 12px; margin-top: 20px; }
-
     .summary-item {
       display: grid;
       grid-template-columns: 1fr 130px 130px 40px;
@@ -290,19 +339,15 @@
       background: #fff;
       padding: 14px;
     }
-
     .ok { color: var(--success); font-weight: 900; }
     .no { color: var(--danger);  font-weight: 900; }
 
     .excel-table {
       width: 100%;
       border-collapse: collapse;
-      overflow: hidden;
-      border-radius: 16px;
       font-size: 13px;
       margin-top: 14px;
     }
-
     .excel-table th,
     .excel-table td {
       border: 1px solid #334155;
@@ -310,7 +355,6 @@
       text-align: left;
       white-space: nowrap;
     }
-
     .excel-table th { background: #1e293b; color: #fff; }
 
     .status { margin-top: 12px; font-weight: 700; color: var(--primary); }
@@ -325,429 +369,512 @@
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <div>
-        <div class="tag-row">
-          <span class="tag">P4 Maths</span>
-          <span class="tag secondary">Excel Question Bank</span>
-          <span class="tag" id="timerTag">10s Sprint</span>
-        </div>
-        <h1>P4 Maths Sprint Game</h1>
-        <p class="subtitle">Upload an Excel question bank, set the timer, and let students answer one question at a time.</p>
+<div class="container">
+
+  <!-- ══ HEADER ══ -->
+  <header>
+    <div>
+      <div class="tag-row">
+        <span class="tag">🐻 P4 Maths</span>
+        <span class="tag secondary">Excel Question Bank</span>
+        <span class="tag" id="timerTag">10s Sprint</span>
       </div>
-      <button class="btn-light" onclick="showScreen('settingsScreen')">⚙ Settings</button>
-    </header>
+      <h1>
+        <svg width="62" height="62" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="22" cy="22" r="14" fill="#c8a06e"/>
+          <circle cx="78" cy="22" r="14" fill="#c8a06e"/>
+          <circle cx="22" cy="22" r="8"  fill="#e8c49a"/>
+          <circle cx="78" cy="22" r="8"  fill="#e8c49a"/>
+          <circle cx="50" cy="55" r="38" fill="#c8a06e"/>
+          <ellipse cx="50" cy="65" rx="22" ry="16" fill="#e8c49a"/>
+          <circle cx="37" cy="48" r="6"   fill="#1a1a1a"/>
+          <circle cx="63" cy="48" r="6"   fill="#1a1a1a"/>
+          <circle cx="39" cy="46" r="2"   fill="#fff"/>
+          <circle cx="65" cy="46" r="2"   fill="#fff"/>
+          <ellipse cx="50" cy="60" rx="6" ry="4" fill="#7a4a2a"/>
+          <path d="M43 67 Q50 74 57 67" stroke="#7a4a2a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <circle cx="28" cy="60" r="7" fill="#f4a0a0" opacity="0.5"/>
+          <circle cx="72" cy="60" r="7" fill="#f4a0a0" opacity="0.5"/>
+          <polygon points="50,4 26,17 74,17" fill="#2563eb"/>
+          <rect x="26" y="17" width="48" height="7" rx="3" fill="#1e40af"/>
+          <line x1="74" y1="17" x2="79" y2="30" stroke="#f59e0b" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="79" cy="33" r="3.5" fill="#f59e0b"/>
+        </svg>
+        P4 Maths Sprint
+      </h1>
+      <p class="subtitle">Upload your Excel question bank · set the timer · let students sprint! 🐾</p>
+    </div>
+    <button class="btn-light" onclick="showScreen('settingsScreen')">⚙ Settings</button>
+  </header>
 
-    <main>
-      <!-- ░░ SETTINGS SCREEN ░░ -->
-      <section id="settingsScreen" class="screen active">
-        <div class="grid">
-          <div class="card">
-            <h2>Teacher Settings</h2>
-            <div class="form-grid">
-              <div>
-                <label for="excelFile">Excel Question File (.xlsx)</label>
-                <input id="excelFile" type="file" accept=".xlsx,.xls" />
-              </div>
-              <div>
-                <label for="sheetName">Sheet Name (optional)</label>
-                <input id="sheetName" type="text" placeholder="Leave blank to use first sheet" />
-              </div>
-              <div>
-                <label for="secondsPerQuestion">Seconds Per Question</label>
-                <input id="secondsPerQuestion" type="number" min="3" max="600" value="10"
-                       oninput="updateTimerTag()" />
-              </div>
-              <div>
-                <label for="questionCount">Number of Questions</label>
-                <input id="questionCount" type="number" min="1" max="100" value="10" />
-              </div>
-              <div>
-                <label for="topicFilter">Topic Filter</label>
-                <select id="topicFilter">
-                  <option value="all">All topics</option>
-                </select>
-              </div>
-              <div>
-                <label for="randomOrder">Question Order</label>
-                <select id="randomOrder">
-                  <option value="yes">Random</option>
-                  <option value="no">In Excel order</option>
-                </select>
-              </div>
-            </div>
-            <p id="fileStatus" class="status">
-              No file uploaded — will auto-load <b>q1.xlsx</b> from the same folder when you start.
-            </p>
-            <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:16px;">
-              <button id="startButton" class="btn-primary" onclick="startGame()">▶ Start Game</button>
-              <button class="btn-light" onclick="loadDefaultExcel()">↺ Reload q1.xlsx</button>
-            </div>
-          </div>
+  <main>
 
-          <aside class="side-panel">
-            <h2>Excel Header Design</h2>
-            <p>Prepare your Excel file with these headers in Row 1. Only <b>QuestionText</b> and <b>Answer</b> are required.</p>
-            <table class="excel-table">
-              <thead>
-                <tr>
-                  <th>QuestionID</th><th>Level</th><th>Topic</th>
-                  <th>QuestionText</th><th>Answer</th>
-                  <th>Explanation</th><th>TimeLimitSeconds</th><th>Active</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Q001</td><td>Easy</td><td>Multiplication</td>
-                  <td>12 × 8 = ?</td><td>96</td>
-                  <td>12 × 8 = 96</td><td>10</td><td>Y</td>
-                </tr>
-              </tbody>
-            </table>
-            <div class="mini-stats">
-              <div class="mini-stat">✔ Required<br/>QuestionText</div>
-              <div class="mini-stat">✔ Required<br/>Answer</div>
-            </div>
-            <p class="small-note">
-              <b>TimeLimitSeconds</b> in Excel is ignored — the timer always uses
-              <em>Seconds Per Question</em> from Settings. Set <b>Active = N</b> to hide a question.
-            </p>
-          </aside>
-        </div>
-      </section>
-
-      <!-- ░░ GAME SCREEN ░░ -->
-      <section id="gameScreen" class="screen">
-        <div class="game-layout">
-          <div class="card">
-            <div class="game-top">
-              <div>
-                <div class="tag" id="topicTag">Topic</div>
-                <p class="small-note" id="questionCounter">Question 1 / 10</p>
-              </div>
-              <div id="timerBox" class="timer-box">10s</div>
-            </div>
-            <div class="progress-wrap">
-              <div id="progressBar" class="progress-bar"></div>
-            </div>
-            <div class="question-box">
-              <div id="questionText" class="question-text">Question</div>
-            </div>
-            <div class="answer-row">
-              <input id="answerInput" type="text" placeholder="Type answer" autocomplete="off" />
-              <button id="submitButton" class="btn-primary" onclick="submitAnswer()">Submit</button>
-              <button id="nextButton" class="btn-accent" onclick="nextQuestion()" style="display:none;">Next</button>
-            </div>
-            <div id="feedbackBox" class="feedback"></div>
-          </div>
-
-          <aside class="card score-card">
-            <h2>Score</h2>
-            <div id="liveScore" class="score-number">0/0</div>
-            <p class="small-note">One question at a time. Time up = marked wrong automatically.</p>
-            <button class="btn-light" style="margin-top:16px;" onclick="restartToSettings()">← Back to Settings</button>
-          </aside>
-        </div>
-      </section>
-
-      <!-- ░░ SUMMARY SCREEN ░░ -->
-      <section id="summaryScreen" class="screen">
+    <!-- ══ SETTINGS ══ -->
+    <section id="settingsScreen" class="screen active">
+      <div class="grid">
         <div class="card">
-          <h2>Practice Summary</h2>
-          <div id="finalScore" class="score-number">0/0</div>
-          <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:8px;">
-            <button class="btn-primary" onclick="startGame()">↺ Play Again</button>
-            <button class="btn-light"  onclick="restartToSettings()">⚙ Change Settings</button>
+          <h2>🐻 Teacher Settings</h2>
+          <div class="form-grid">
+            <div>
+              <label for="excelFile">Excel Question File (.xlsx)</label>
+              <input id="excelFile" type="file" accept=".xlsx,.xls" />
+            </div>
+            <div>
+              <label for="sheetName">Sheet Name (optional)</label>
+              <input id="sheetName" type="text" placeholder="Leave blank to use first sheet" />
+            </div>
+            <div>
+              <label for="secondsPerQuestion">Seconds Per Question</label>
+              <input id="secondsPerQuestion" type="number" min="3" max="600" value="10"
+                     oninput="updateTimerTag()" />
+            </div>
+            <div>
+              <label for="questionCount">Number of Questions</label>
+              <input id="questionCount" type="number" min="1" max="100" value="10" />
+            </div>
+            <div>
+              <label for="topicFilter">Topic Filter</label>
+              <select id="topicFilter">
+                <option value="all">All topics</option>
+              </select>
+            </div>
+            <div>
+              <label for="randomOrder">Question Order</label>
+              <select id="randomOrder">
+                <option value="yes">🔀 Random</option>
+                <option value="no">📋 In Excel order</option>
+              </select>
+            </div>
           </div>
-          <div id="summaryList" class="summary-list"></div>
+          <p id="fileStatus" class="status">
+            No file uploaded — will auto-load <b>q1.xlsx</b> from the same folder when you start.
+          </p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:16px;">
+            <button class="btn-primary" onclick="startGame()">▶ Start Game</button>
+            <button class="btn-light"   onclick="loadDefaultExcel()">↺ Reload q1.xlsx</button>
+          </div>
         </div>
-      </section>
-    </main>
-  </div>
 
-  <script>
-    /* ───── State ───── */
-    let allQuestions  = [];
-    let gameQuestions = [];
-    let currentIndex  = 0;
-    let timeLeft      = 10;
-    let maxSeconds    = 10;
-    let timer         = null;
-    let results       = [];
-    let answered      = false;
+        <aside class="side-panel">
+          <div style="text-align:center;margin-bottom:12px;">
+            <svg width="90" height="90" viewBox="0 0 100 110" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="22" cy="26" r="13" fill="#a07040"/>
+              <circle cx="78" cy="26" r="13" fill="#a07040"/>
+              <circle cx="22" cy="26" r="7"  fill="#c8a06e"/>
+              <circle cx="78" cy="26" r="7"  fill="#c8a06e"/>
+              <circle cx="50" cy="56" r="36" fill="#a07040"/>
+              <ellipse cx="50" cy="66" rx="20" ry="14" fill="#c8a06e"/>
+              <circle cx="38" cy="50" r="5.5" fill="#1a1a1a"/>
+              <circle cx="62" cy="50" r="5.5" fill="#1a1a1a"/>
+              <circle cx="40" cy="48" r="1.8" fill="#fff"/>
+              <circle cx="64" cy="48" r="1.8" fill="#fff"/>
+              <ellipse cx="50" cy="61" rx="5" ry="3.5" fill="#7a4a2a"/>
+              <path d="M44 68 Q50 75 56 68" stroke="#7a4a2a" stroke-width="2" fill="none" stroke-linecap="round"/>
+              <circle cx="30" cy="62" r="6" fill="#f4a0a0" opacity="0.45"/>
+              <circle cx="70" cy="62" r="6" fill="#f4a0a0" opacity="0.45"/>
+              <rect x="22" y="82" width="56" height="24" rx="5" fill="#2563eb"/>
+              <line x1="50" y1="82" x2="50" y2="106" stroke="#93c5fd" stroke-width="2"/>
+              <line x1="28" y1="90" x2="44" y2="90" stroke="#93c5fd" stroke-width="1.5"/>
+              <line x1="28" y1="96" x2="44" y2="96" stroke="#93c5fd" stroke-width="1.5"/>
+              <line x1="56" y1="90" x2="72" y2="90" stroke="#93c5fd" stroke-width="1.5"/>
+              <line x1="56" y1="96" x2="72" y2="96" stroke="#93c5fd" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <h2>Excel Header Design</h2>
+          <p>Prepare your Excel file with these headers in Row 1. Only <b>QuestionText</b> and <b>Answer</b> are required.</p>
+          <table class="excel-table">
+            <thead>
+              <tr>
+                <th>QuestionID</th><th>Level</th><th>Topic</th>
+                <th>QuestionText</th><th>Answer</th>
+                <th>Explanation</th><th>TimeLimitSeconds</th><th>Active</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Q001</td><td>Easy</td><td>Multiplication</td>
+                <td>12 × 8 = ?</td><td>96</td>
+                <td>12 × 8 = 96</td><td>10</td><td>Y</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="mini-stats">
+            <div class="mini-stat">✔ Required<br/>QuestionText</div>
+            <div class="mini-stat">✔ Required<br/>Answer</div>
+          </div>
+          <p class="small-note">
+            Timer always uses <em>Seconds Per Question</em> from Settings.
+            Set <b>Active = N</b> to hide a question.
+          </p>
+        </aside>
+      </div>
+    </section>
 
-    const requiredHeaders  = ["QuestionText", "Answer"];
-    const defaultExcelPath = "q1.xlsx";
+    <!-- ══ GAME ══ -->
+    <section id="gameScreen" class="screen">
+      <div class="game-layout">
+        <div class="card">
+          <div class="game-top">
+            <div>
+              <div class="tag" id="topicTag">Topic</div>
+              <p class="small-note" id="questionCounter">Question 1 / 10</p>
+            </div>
+            <div id="timerBox" class="timer-box">10s</div>
+          </div>
+          <div class="progress-wrap">
+            <div id="progressBar" class="progress-bar"></div>
+          </div>
+          <div class="question-box">
+            <div id="questionText" class="question-text">Question</div>
+            <div class="corner-bear" id="cornerBear">🐻</div>
+          </div>
+          <div class="answer-row">
+            <input id="answerInput" type="text" placeholder="Type your answer…" autocomplete="off" />
+            <button id="submitButton" class="btn-primary" onclick="submitAnswer()">Submit</button>
+            <button id="nextButton"   class="btn-accent"  onclick="nextQuestion()" style="display:none;">Next ›</button>
+          </div>
+          <div id="feedbackBox" class="feedback">
+            <span class="feedback-bear" id="feedbackBear">🐻</span>
+            <div id="feedbackText"></div>
+          </div>
+        </div>
 
-    /* ───── Init ───── */
-    document.getElementById("excelFile").addEventListener("change", handleExcelUpload);
-    document.getElementById("answerInput").addEventListener("keydown", function (e) {
-      if (e.key === "Enter") { answered ? nextQuestion() : submitAnswer(); }
+        <aside class="card score-card">
+          <span class="score-bear" id="scoreBear">🐻</span>
+          <h2>Score</h2>
+          <div id="liveScore" class="score-number">0/0</div>
+          <p class="small-note" style="margin-top:8px;">
+            One question at a time.<br/>Time up = marked wrong automatically.
+          </p>
+          <button class="btn-light" style="margin-top:20px;width:100%;" onclick="restartToSettings()">← Back to Settings</button>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ══ SUMMARY ══ -->
+    <section id="summaryScreen" class="screen">
+      <div class="card">
+        <div class="summary-banner" id="summaryBanner">🐻</div>
+        <h2>Practice Summary</h2>
+        <div id="finalScore" class="score-number">0 / 0</div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px;">
+          <button class="btn-primary" onclick="startGame()">↺ Play Again</button>
+          <button class="btn-light"   onclick="restartToSettings()">⚙ Change Settings</button>
+        </div>
+        <div id="summaryList" class="summary-list"></div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script>
+  let allQuestions  = [];
+  let gameQuestions = [];
+  let currentIndex  = 0;
+  let timeLeft      = 10;
+  let maxSeconds    = 10;
+  let timer         = null;
+  let results       = [];
+  let answered      = false;
+
+  const requiredHeaders  = ["QuestionText", "Answer"];
+  const defaultExcelPath = "q1.xlsx";
+
+  const B = {
+    normal : "🐻",
+    happy  : "🥰",
+    sad    : "😢",
+    nervous: "😰",
+    clock  : "⏰",
+    cheer  : "🎉",
+  };
+
+  document.getElementById("excelFile").addEventListener("change", handleExcelUpload);
+  document.getElementById("answerInput").addEventListener("keydown", function (e) {
+    if (e.key === "Enter") { answered ? nextQuestion() : submitAnswer(); }
+  });
+  loadDefaultExcel();
+
+  function getSecondsFromSettings() {
+    const v = parseInt(document.getElementById("secondsPerQuestion").value, 10);
+    return isNaN(v) ? 10 : Math.max(3, Math.min(600, v));
+  }
+
+  function updateTimerTag() {
+    document.getElementById("timerTag").textContent = getSecondsFromSettings() + "s Sprint";
+  }
+
+  function showScreen(id) {
+    document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
+    document.getElementById(id).classList.add("active");
+  }
+
+  function setFileStatus(msg, ok) {
+    const el = document.getElementById("fileStatus");
+    el.innerHTML   = msg;
+    el.style.color = ok ? "#16a34a" : "#dc2626";
+  }
+
+  function setCornerBear(emoji, anim) {
+    const el = document.getElementById("cornerBear");
+    el.textContent = emoji;
+    el.className   = "corner-bear";
+    if (anim) { void el.offsetWidth; el.classList.add(anim); }
+  }
+
+  function setScoreBear(emoji) {
+    const el = document.getElementById("scoreBear");
+    el.textContent = emoji;
+    el.className   = "score-bear";
+    void el.offsetWidth;
+    el.classList.add("bear-pop");
+  }
+
+  function parseWorkbook(arrayBuffer, sourceName) {
+    try {
+      const wb   = XLSX.read(new Uint8Array(arrayBuffer), { type: "array" });
+      const pref = document.getElementById("sheetName").value.trim();
+      const sh   = pref && wb.Sheets[pref] ? pref : wb.SheetNames[0];
+      const rows = XLSX.utils.sheet_to_json(wb.Sheets[sh], { defval: "" });
+
+      if (!rows.length) {
+        setFileStatus(`⚠ ${sourceName}: no rows found.`, false); return false;
+      }
+      const miss = requiredHeaders.filter(h => !Object.keys(rows[0]).includes(h));
+      if (miss.length) {
+        setFileStatus(`⚠ ${sourceName}: missing column(s): <b>${miss.join(", ")}</b>`, false); return false;
+      }
+
+      allQuestions = rows
+        .filter(r => String(r.Active || "Y").toUpperCase() !== "N")
+        .filter(r => String(r.QuestionText).trim() && String(r.Answer).trim())
+        .map((r, i) => ({
+          id:           r.QuestionID || "Q" + String(i + 1).padStart(3, "0"),
+          level:        r.Level       || "",
+          topic:        r.Topic       || "General",
+          questionText: String(r.QuestionText),
+          answer:       String(r.Answer),
+          explanation:  r.Explanation || "",
+        }));
+
+      updateTopicFilter();
+      setFileStatus(`🐻 ${allQuestions.length} question(s) loaded from <b>${sourceName}</b> (sheet: ${sh})`, true);
+      return allQuestions.length > 0;
+    } catch {
+      setFileStatus(`⚠ Could not read ${sourceName}. Check the file format.`, false);
+      return false;
+    }
+  }
+
+  function handleExcelUpload(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = e => parseWorkbook(e.target.result, file.name);
+    reader.readAsArrayBuffer(file);
+  }
+
+  function loadDefaultExcel() {
+    setFileStatus("🐾 Loading <b>q1.xlsx</b>…", true);
+    fetch(defaultExcelPath)
+      .then(r => { if (!r.ok) throw new Error(); return r.arrayBuffer(); })
+      .then(buf => parseWorkbook(buf, defaultExcelPath))
+      .catch(() => setFileStatus(
+        "No file uploaded yet — upload an Excel file above, or place <b>q1.xlsx</b> in the same folder as this HTML file.",
+        false
+      ));
+  }
+
+  function updateTopicFilter() {
+    const sel = document.getElementById("topicFilter");
+    const topics = [...new Set(allQuestions.map(q => q.topic).filter(Boolean))].sort();
+    sel.innerHTML = '<option value="all">All topics</option>';
+    topics.forEach(t => {
+      const o = document.createElement("option");
+      o.value = o.textContent = t;
+      sel.appendChild(o);
     });
+  }
 
-    loadDefaultExcel();
-
-    /* ───── Helpers ───── */
-    function getSecondsFromSettings() {
-      const val = parseInt(document.getElementById("secondsPerQuestion").value, 10);
-      return isNaN(val) ? 10 : Math.max(3, Math.min(600, val));
+  function shuffle(arr) {
+    const a = [...arr];
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
     }
+    return a;
+  }
 
-    function updateTimerTag() {
-      document.getElementById("timerTag").textContent = getSecondsFromSettings() + "s Sprint";
-    }
-
-    function showScreen(id) {
-      document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
-      document.getElementById(id).classList.add("active");
-    }
-
-    function setFileStatus(message, ok) {
-      const el = document.getElementById("fileStatus");
-      el.innerHTML = message;
-      el.style.color = ok ? "#16a34a" : "#dc2626";
-    }
-
-    /* ───── Excel parsing ───── */
-    function parseWorkbook(arrayBuffer, sourceName) {
+  async function startGame() {
+    if (!allQuestions.length) {
+      setFileStatus("🐾 Trying to load <b>q1.xlsx</b>…", true);
       try {
-        const workbook = XLSX.read(new Uint8Array(arrayBuffer), { type: "array" });
-        const preferred = document.getElementById("sheetName").value.trim();
-        const sheet     = preferred && workbook.Sheets[preferred]
-                          ? preferred : workbook.SheetNames[0];
-        const rows      = XLSX.utils.sheet_to_json(workbook.Sheets[sheet], { defval: "" });
-
-        if (!rows.length) {
-          setFileStatus(`⚠ ${sourceName}: no rows found.`, false);
-          return false;
-        }
-
-        const missing = requiredHeaders.filter(h => !Object.keys(rows[0]).includes(h));
-        if (missing.length) {
-          setFileStatus(`⚠ ${sourceName}: missing column(s): <b>${missing.join(", ")}</b>`, false);
-          return false;
-        }
-
-        allQuestions = rows
-          .filter(r => String(r.Active || "Y").toUpperCase() !== "N")
-          .filter(r => String(r.QuestionText).trim() && String(r.Answer).trim())
-          .map((r, i) => ({
-            id:           r.QuestionID || "Q" + String(i + 1).padStart(3, "0"),
-            level:        r.Level   || "",
-            topic:        r.Topic   || "General",
-            questionText: String(r.QuestionText),
-            answer:       String(r.Answer),
-            explanation:  r.Explanation || ""
-          }));
-
-        updateTopicFilter();
-        setFileStatus(
-          `✔ ${allQuestions.length} active question(s) loaded from <b>${sourceName}</b> (sheet: ${sheet})`,
-          true
-        );
-        return allQuestions.length > 0;
-
-      } catch (err) {
-        setFileStatus(`⚠ Could not read ${sourceName}. Check the file format.`, false);
-        return false;
-      }
-    }
-
-    /* ───── Load from file picker ───── */
-    function handleExcelUpload(event) {
-      const file = event.target.files[0];
-      if (!file) return;
-      const reader = new FileReader();
-      reader.onload = e => parseWorkbook(e.target.result, file.name);
-      reader.readAsArrayBuffer(file);
-    }
-
-    /* ───── Load default q1.xlsx ───── */
-    function loadDefaultExcel() {
-      setFileStatus("Loading <b>q1.xlsx</b>…", true);
-      fetch(defaultExcelPath)
-        .then(res => {
-          if (!res.ok) throw new Error("not found");
-          return res.arrayBuffer();
-        })
-        .then(buf => parseWorkbook(buf, defaultExcelPath))
-        .catch(() => setFileStatus(
-          "No file uploaded yet — upload an Excel file above, or place <b>q1.xlsx</b> in the same folder as this HTML file.",
-          false
-        ));
-    }
-
-    /* ───── Topic filter ───── */
-    function updateTopicFilter() {
-      const sel    = document.getElementById("topicFilter");
-      const topics = [...new Set(allQuestions.map(q => q.topic).filter(Boolean))].sort();
-      sel.innerHTML = '<option value="all">All topics</option>';
-      topics.forEach(t => {
-        const opt = document.createElement("option");
-        opt.value = opt.textContent = t;
-        sel.appendChild(opt);
-      });
-    }
-
-    function shuffle(arr) {
-      const a = [...arr];
-      for (let i = a.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [a[i], a[j]] = [a[j], a[i]];
-      }
-      return a;
-    }
-
-    /* ───── Game flow ───── */
-    async function startGame() {
-      if (!allQuestions.length) {
-        setFileStatus("Trying to load <b>q1.xlsx</b>…", true);
-        try {
-          const res = await fetch(defaultExcelPath);
-          if (!res.ok) throw new Error();
-          const ok = parseWorkbook(await res.arrayBuffer(), defaultExcelPath);
-          if (!ok) return;
-        } catch {
-          setFileStatus(
-            "No questions loaded. Upload an Excel file or add q1.xlsx to the same folder.",
-            false
-          );
-          return;
-        }
-      }
-
-      const topic  = document.getElementById("topicFilter").value;
-      const count  = parseInt(document.getElementById("questionCount").value, 10) || 10;
-      const random = document.getElementById("randomOrder").value === "yes";
-
-      let pool = topic === "all" ? [...allQuestions] : allQuestions.filter(q => q.topic === topic);
-      if (random) pool = shuffle(pool);
-      gameQuestions = pool.slice(0, count);
-
-      if (!gameQuestions.length) {
-        alert("No questions match the current filter. Please adjust the topic or upload a different file.");
+        const res = await fetch(defaultExcelPath);
+        if (!res.ok) throw new Error();
+        if (!parseWorkbook(await res.arrayBuffer(), defaultExcelPath)) return;
+      } catch {
+        setFileStatus("No questions loaded. Upload an Excel file or add q1.xlsx to the folder.", false);
         return;
       }
-
-      currentIndex = 0;
-      results      = [];
-      showScreen("gameScreen");
-      loadQuestion();
     }
 
-    function loadQuestion() {
-      clearInterval(timer);
-      answered = false;
+    const topic  = document.getElementById("topicFilter").value;
+    const count  = parseInt(document.getElementById("questionCount").value, 10) || 10;
+    const random = document.getElementById("randomOrder").value === "yes";
 
-      // Always read timer from Settings — single source of truth
-      maxSeconds = getSecondsFromSettings();
-      timeLeft   = maxSeconds;
+    let pool = topic === "all" ? [...allQuestions] : allQuestions.filter(q => q.topic === topic);
+    if (random) pool = shuffle(pool);
+    gameQuestions = pool.slice(0, count);
 
-      const q = gameQuestions[currentIndex];
-      document.getElementById("questionText").textContent    = q.questionText;
-      document.getElementById("topicTag").textContent        = q.topic;
-      document.getElementById("questionCounter").textContent =
-        `Question ${currentIndex + 1} / ${gameQuestions.length}`;
+    if (!gameQuestions.length) {
+      alert("No questions match the current filter. Please adjust the topic or upload a different file.");
+      return;
+    }
 
-      document.getElementById("answerInput").value           = "";
-      document.getElementById("answerInput").disabled        = false;
-      document.getElementById("answerInput").focus();
-      document.getElementById("submitButton").style.display  = "inline-block";
-      document.getElementById("nextButton").style.display    = "none";
-      document.getElementById("feedbackBox").className       = "feedback";
-      document.getElementById("feedbackBox").textContent     = "";
+    currentIndex = 0;
+    results      = [];
+    setScoreBear(B.normal);
+    showScreen("gameScreen");
+    loadQuestion();
+  }
 
+  function loadQuestion() {
+    clearInterval(timer);
+    answered   = false;
+    maxSeconds = getSecondsFromSettings();
+    timeLeft   = maxSeconds;
+
+    const q = gameQuestions[currentIndex];
+    document.getElementById("questionText").textContent    = q.questionText;
+    document.getElementById("topicTag").textContent        = q.topic;
+    document.getElementById("questionCounter").textContent =
+      `Question ${currentIndex + 1} / ${gameQuestions.length}`;
+    document.getElementById("answerInput").value           = "";
+    document.getElementById("answerInput").disabled        = false;
+    document.getElementById("answerInput").focus();
+    document.getElementById("submitButton").style.display  = "inline-block";
+    document.getElementById("nextButton").style.display    = "none";
+    document.getElementById("feedbackBox").className       = "feedback";
+    document.getElementById("feedbackText").innerHTML      = "";
+    document.getElementById("feedbackBear").textContent    = B.normal;
+
+    setCornerBear(B.normal, null);
+    updateTimerDisplay();
+    updateLiveScore();
+
+    timer = setInterval(() => {
+      timeLeft--;
       updateTimerDisplay();
-      updateLiveScore();
+      if (timeLeft === 3) setCornerBear(B.nervous, null);
+      if (timeLeft <= 0)  submitAnswer(true);
+    }, 1000);
+  }
 
-      timer = setInterval(() => {
-        timeLeft--;
-        updateTimerDisplay();
-        if (timeLeft <= 0) submitAnswer(true);
-      }, 1000);
+  function normalize(v) {
+    return String(v).trim().replace(/\s+/g, "").toLowerCase();
+  }
+
+  function submitAnswer(timeout = false) {
+    if (answered) return;
+    answered = true;
+    clearInterval(timer);
+
+    const q          = gameQuestions[currentIndex];
+    const userAnswer = timeout ? "—" : document.getElementById("answerInput").value;
+    const correct    = !timeout && normalize(userAnswer) === normalize(q.answer);
+
+    results.push({ questionText: q.questionText, userAnswer,
+                   correctAnswer: q.answer, explanation: q.explanation,
+                   correct, topic: q.topic, timeout });
+
+    const fb     = document.getElementById("feedbackBox");
+    const fbBear = document.getElementById("feedbackBear");
+    const fbText = document.getElementById("feedbackText");
+
+    if (correct) {
+      fb.className       = "feedback show correct";
+      fbBear.textContent = B.happy;
+      fbText.innerHTML   = `<b>✓ Correct! Well done! 🌟</b>`;
+      setCornerBear(B.cheer, "bear-bounce");
+      setScoreBear(B.happy);
+    } else if (timeout) {
+      fb.className       = "feedback show wrong";
+      fbBear.textContent = B.clock;
+      fbText.innerHTML   = `<b>⏰ Time is up!</b> Correct answer: <b>${q.answer}</b>`
+        + (q.explanation ? `<br><span style="font-weight:400">${q.explanation}</span>` : "");
+      setCornerBear(B.nervous, "bear-shake");
+      setScoreBear(B.sad);
+    } else {
+      fb.className       = "feedback show wrong";
+      fbBear.textContent = B.sad;
+      fbText.innerHTML   = `<b>✗ Not quite.</b> Correct answer: <b>${q.answer}</b>`
+        + (q.explanation ? `<br><span style="font-weight:400">${q.explanation}</span>` : "");
+      setCornerBear(B.sad, "bear-shake");
+      setScoreBear(B.sad);
     }
 
-    function normalize(v) {
-      return String(v).trim().replace(/\s+/g, "").toLowerCase();
-    }
+    document.getElementById("answerInput").disabled       = true;
+    document.getElementById("submitButton").style.display = "none";
+    document.getElementById("nextButton").style.display   = "inline-block";
+    updateLiveScore();
+  }
 
-    function submitAnswer(timeout = false) {
-      if (answered) return;
-      answered = true;
-      clearInterval(timer);
+  function nextQuestion() {
+    if (currentIndex + 1 >= gameQuestions.length) { showSummary(); return; }
+    currentIndex++;
+    loadQuestion();
+  }
 
-      const q          = gameQuestions[currentIndex];
-      const userAnswer = timeout ? "—" : document.getElementById("answerInput").value;
-      const correct    = !timeout && normalize(userAnswer) === normalize(q.answer);
+  function updateTimerDisplay() {
+    const box = document.getElementById("timerBox");
+    box.textContent = timeLeft + "s";
+    box.classList.toggle("danger", timeLeft <= 3);
+    document.getElementById("progressBar").style.width =
+      Math.max(0, (timeLeft / maxSeconds) * 100) + "%";
+  }
 
-      results.push({
-        questionText: q.questionText,
-        userAnswer,
-        correctAnswer: q.answer,
-        explanation:  q.explanation,
-        correct,
-        topic:   q.topic,
-        timeout
-      });
+  function updateLiveScore() {
+    const c = results.filter(r => r.correct).length;
+    document.getElementById("liveScore").textContent = `${c}/${results.length}`;
+  }
 
-      const fb = document.getElementById("feedbackBox");
-      fb.className = "feedback show " + (correct ? "correct" : "wrong");
-      fb.innerHTML = correct
-        ? "✓ Correct!"
-        : `${timeout ? "⏰ Time is up." : "✗ Not quite."} Correct answer: <b>${q.answer}</b>`
-          + (q.explanation ? `<br><span style="font-weight:400;">${q.explanation}</span>` : "");
+  function showSummary() {
+    clearInterval(timer);
+    showScreen("summaryScreen");
 
-      document.getElementById("answerInput").disabled       = true;
-      document.getElementById("submitButton").style.display = "none";
-      document.getElementById("nextButton").style.display   = "inline-block";
-      updateLiveScore();
-    }
+    const score = results.filter(r => r.correct).length;
+    const total = gameQuestions.length;
+    const pct   = total ? score / total : 0;
 
-    function nextQuestion() {
-      if (currentIndex + 1 >= gameQuestions.length) { showSummary(); return; }
-      currentIndex++;
-      loadQuestion();
-    }
+    document.getElementById("finalScore").textContent = `${score} / ${total}`;
 
-    function updateTimerDisplay() {
-      const box = document.getElementById("timerBox");
-      box.textContent = timeLeft + "s";
-      box.classList.toggle("danger", timeLeft <= 3);
-      document.getElementById("progressBar").style.width =
-        Math.max(0, (timeLeft / maxSeconds) * 100) + "%";
-    }
+    let banner;
+    if (pct === 1)       banner = "🏆🐻🏆";
+    else if (pct >= 0.8) banner = "🌟🐻🌟";
+    else if (pct >= 0.5) banner = "👍🐻👍";
+    else                 banner = "💪🐻💪";
+    document.getElementById("summaryBanner").textContent = banner;
 
-    function updateLiveScore() {
-      const s = results.filter(r => r.correct).length;
-      document.getElementById("liveScore").textContent = `${s}/${results.length}`;
-    }
+    const list = document.getElementById("summaryList");
+    list.innerHTML = "";
+    results.forEach((r, i) => {
+      const item = document.createElement("div");
+      item.className = "summary-item";
+      item.innerHTML = `
+        <div><b>${i + 1}. ${r.questionText}</b><br>
+             <span class="small-note">${r.topic}</span></div>
+        <div>Your: <b>${r.userAnswer}</b></div>
+        <div>Answer: <b>${r.correctAnswer}</b></div>
+        <div class="${r.correct ? "ok" : "no"}">${r.correct ? "✓" : "✕"}</div>`;
+      list.appendChild(item);
+    });
+  }
 
-    function showSummary() {
-      clearInterval(timer);
-      showScreen("summaryScreen");
-      const score = results.filter(r => r.correct).length;
-      document.getElementById("finalScore").textContent = `${score} / ${gameQuestions.length}`;
-
-      const list = document.getElementById("summaryList");
-      list.innerHTML = "";
-      results.forEach((r, i) => {
-        const item = document.createElement("div");
-        item.className = "summary-item";
-        item.innerHTML = `
-          <div><b>${i + 1}. ${r.questionText}</b><br>
-               <span class="small-note">${r.topic}</span></div>
-          <div>Your: <b>${r.userAnswer}</b></div>
-          <div>Answer: <b>${r.correctAnswer}</b></div>
-          <div class="${r.correct ? "ok" : "no"}">${r.correct ? "✓" : "✕"}</div>`;
-        list.appendChild(item);
-      });
-    }
-
-    function restartToSettings() {
-      clearInterval(timer);
-      showScreen("settingsScreen");
-    }
-  </script>
+  function restartToSettings() {
+    clearInterval(timer);
+    showScreen("settingsScreen");
+  }
+</script>
 </body>
 </html>
