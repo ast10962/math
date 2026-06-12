@@ -410,7 +410,7 @@
         <div class="tag-row">
           <span class="tag">P4 Maths</span>
           <span class="tag secondary">Excel Question Bank</span>
-          <span class="tag">10s Sprint</span>
+          <span class="tag">20s Sprint</span>
         </div>
         <h1>P4 Maths Sprint Game</h1>
         <p class="subtitle">Upload an Excel question bank, set the timer, and let students answer one question at a time.</p>
@@ -434,7 +434,7 @@
               </div>
               <div>
                 <label for="secondsPerQuestion">Default Seconds Per Question</label>
-                <input id="secondsPerQuestion" type="number" min="3" max="60" value="10" />
+                <input id="secondsPerQuestion" type="number" min="3" max="60" value="20" />
               </div>
               <div>
                 <label for="questionCount">Number of Questions</label>
@@ -741,7 +741,7 @@
       answered = false;
 
       const q = gameQuestions[currentIndex];
-      const defaultSeconds = Number(document.getElementById("secondsPerQuestion").value) || 10;
+      const defaultSeconds = getDefaultSeconds();
       timeLeft = q.timeLimitSeconds || defaultSeconds;
 
       document.getElementById("questionText").textContent = q.questionText;
