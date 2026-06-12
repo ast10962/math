@@ -710,6 +710,12 @@
       return copy;
     }
 
+    function getDefaultSeconds() {
+      const value = Number(document.getElementById("secondsPerQuestion").value);
+      if (!Number.isFinite(value) || value < 3) return 10;
+      return Math.min(60, value);
+    }
+
     function startGame() {
       const topic = document.getElementById("topicFilter").value;
       const count = Number(document.getElementById("questionCount").value) || 10;
