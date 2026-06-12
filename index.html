@@ -20,9 +20,7 @@
       --shadow: 0 18px 45px rgba(15, 23, 42, 0.12);
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -64,10 +62,7 @@
       color: #1e40af;
     }
 
-    .tag.secondary {
-      background: #fef3c7;
-      color: #92400e;
-    }
+    .tag.secondary { background: #fef3c7; color: #92400e; }
 
     h1 {
       margin: 0;
@@ -83,7 +78,7 @@
     }
 
     .card {
-      background: rgba(255, 255, 255, 0.92);
+      background: rgba(255,255,255,0.92);
       border: 1px solid var(--border);
       border-radius: 28px;
       box-shadow: var(--shadow);
@@ -110,11 +105,7 @@
       color: #334155;
     }
 
-    input,
-    select,
-    button {
-      font-family: inherit;
-    }
+    input, select, button { font-family: inherit; }
 
     input[type="number"],
     input[type="text"],
@@ -130,10 +121,9 @@
       outline: none;
     }
 
-    input:focus,
-    select:focus {
+    input:focus, select:focus {
       border-color: var(--primary);
-      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+      box-shadow: 0 0 0 4px rgba(37,99,235,0.12);
     }
 
     button {
@@ -146,9 +136,7 @@
       transition: transform 0.15s ease, opacity 0.15s ease, background 0.15s ease;
     }
 
-    button:hover {
-      transform: translateY(-1px);
-    }
+    button:hover { transform: translateY(-1px); }
 
     button:disabled {
       opacity: 0.5;
@@ -156,24 +144,10 @@
       transform: none;
     }
 
-    .btn-primary {
-      background: var(--primary);
-      color: #fff;
-    }
-
-    .btn-primary:hover {
-      background: var(--primary-dark);
-    }
-
-    .btn-accent {
-      background: var(--accent);
-      color: #111827;
-    }
-
-    .btn-light {
-      background: #e2e8f0;
-      color: #0f172a;
-    }
+    .btn-primary { background: var(--primary); color: #fff; }
+    .btn-primary:hover { background: var(--primary-dark); }
+    .btn-accent { background: var(--accent); color: #111827; }
+    .btn-light { background: #e2e8f0; color: #0f172a; }
 
     .side-panel {
       background: #0f172a;
@@ -183,11 +157,7 @@
       min-height: 100%;
     }
 
-    .side-panel p {
-      color: #cbd5e1;
-      line-height: 1.6;
-      margin-top: 10px;
-    }
+    .side-panel p { color: #cbd5e1; line-height: 1.6; margin-top: 10px; }
 
     .mini-stats {
       display: grid;
@@ -197,19 +167,14 @@
     }
 
     .mini-stat {
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255,255,255,0.1);
       border-radius: 18px;
       padding: 14px;
       font-weight: 800;
     }
 
-    .screen {
-      display: none;
-    }
-
-    .screen.active {
-      display: block;
-    }
+    .screen { display: none; }
+    .screen.active { display: block; }
 
     .game-layout {
       display: grid;
@@ -244,7 +209,7 @@
 
     @keyframes pulse {
       from { transform: scale(1); }
-      to { transform: scale(1.04); }
+      to   { transform: scale(1.04); }
     }
 
     .progress-wrap {
@@ -281,10 +246,7 @@
       line-height: 1.15;
     }
 
-    .answer-row {
-      display: flex;
-      gap: 12px;
-    }
+    .answer-row { display: flex; gap: 12px; }
 
     #answerInput {
       min-height: 58px;
@@ -301,23 +263,11 @@
       display: none;
     }
 
-    .feedback.show {
-      display: block;
-    }
+    .feedback.show  { display: block; }
+    .feedback.correct { background: #dcfce7; color: #166534; }
+    .feedback.wrong   { background: #fee2e2; color: #991b1b; }
 
-    .feedback.correct {
-      background: #dcfce7;
-      color: #166534;
-    }
-
-    .feedback.wrong {
-      background: #fee2e2;
-      color: #991b1b;
-    }
-
-    .score-card {
-      text-align: center;
-    }
+    .score-card { text-align: center; }
 
     .score-number {
       font-size: 48px;
@@ -326,17 +276,9 @@
       margin: 10px 0;
     }
 
-    .small-note {
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.5;
-    }
+    .small-note { font-size: 13px; color: var(--muted); line-height: 1.5; }
 
-    .summary-list {
-      display: grid;
-      gap: 12px;
-      margin-top: 20px;
-    }
+    .summary-list { display: grid; gap: 12px; margin-top: 20px; }
 
     .summary-item {
       display: grid;
@@ -349,15 +291,8 @@
       padding: 14px;
     }
 
-    .ok {
-      color: var(--success);
-      font-weight: 900;
-    }
-
-    .no {
-      color: var(--danger);
-      font-weight: 900;
-    }
+    .ok { color: var(--success); font-weight: 900; }
+    .no { color: var(--danger);  font-weight: 900; }
 
     .excel-table {
       width: 100%;
@@ -376,30 +311,16 @@
       white-space: nowrap;
     }
 
-    .excel-table th {
-      background: #1e293b;
-      color: #fff;
-    }
+    .excel-table th { background: #1e293b; color: #fff; }
 
-    .status {
-      margin-top: 12px;
-      font-weight: 700;
-      color: var(--primary);
-    }
+    .status { margin-top: 12px; font-weight: 700; color: var(--primary); }
 
     @media (max-width: 850px) {
-      header,
-      .grid,
-      .game-layout,
-      .answer-row {
+      header, .grid, .game-layout, .answer-row {
         grid-template-columns: 1fr;
         flex-direction: column;
       }
-
-      .form-grid,
-      .summary-item {
-        grid-template-columns: 1fr;
-      }
+      .form-grid, .summary-item { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -410,15 +331,16 @@
         <div class="tag-row">
           <span class="tag">P4 Maths</span>
           <span class="tag secondary">Excel Question Bank</span>
-          <span class="tag">20s Sprint</span>
+          <span class="tag" id="timerTag">10s Sprint</span>
         </div>
         <h1>P4 Maths Sprint Game</h1>
         <p class="subtitle">Upload an Excel question bank, set the timer, and let students answer one question at a time.</p>
       </div>
-      <button class="btn-light" onclick="showScreen('settingsScreen')">Settings</button>
+      <button class="btn-light" onclick="showScreen('settingsScreen')">⚙ Settings</button>
     </header>
 
     <main>
+      <!-- ░░ SETTINGS SCREEN ░░ -->
       <section id="settingsScreen" class="screen active">
         <div class="grid">
           <div class="card">
@@ -429,12 +351,13 @@
                 <input id="excelFile" type="file" accept=".xlsx,.xls" />
               </div>
               <div>
-                <label for="sheetName">Sheet Name Optional</label>
+                <label for="sheetName">Sheet Name (optional)</label>
                 <input id="sheetName" type="text" placeholder="Leave blank to use first sheet" />
               </div>
               <div>
-                <label for="secondsPerQuestion">Default Seconds Per Question</label>
-                <input id="secondsPerQuestion" type="number" min="3" max="60" value="60" />
+                <label for="secondsPerQuestion">Seconds Per Question</label>
+                <input id="secondsPerQuestion" type="number" min="3" max="600" value="10"
+                       oninput="updateTimerTag()" />
               </div>
               <div>
                 <label for="questionCount">Number of Questions</label>
@@ -454,48 +377,47 @@
                 </select>
               </div>
             </div>
-            <p id="fileStatus" class="status">No Excel file loaded yet.</p>
-            <button id="startButton" class="btn-primary" onclick="startGame()" disabled>Start Game</button>
+            <p id="fileStatus" class="status">
+              No file uploaded — will auto-load <b>q1.xlsx</b> from the same folder when you start.
+            </p>
+            <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:16px;">
+              <button id="startButton" class="btn-primary" onclick="startGame()">▶ Start Game</button>
+              <button class="btn-light" onclick="loadDefaultExcel()">↺ Reload q1.xlsx</button>
+            </div>
           </div>
 
           <aside class="side-panel">
             <h2>Excel Header Design</h2>
-            <p>Please prepare your Excel file with these headers in Row 1. The game will read <b>QuestionText</b> and <b>Answer</b> as the required fields.</p>
+            <p>Prepare your Excel file with these headers in Row 1. Only <b>QuestionText</b> and <b>Answer</b> are required.</p>
             <table class="excel-table">
               <thead>
                 <tr>
-                  <th>QuestionID</th>
-                  <th>Level</th>
-                  <th>Topic</th>
-                  <th>QuestionText</th>
-                  <th>Answer</th>
-                  <th>Explanation</th>
-                  <th>TimeLimitSeconds</th>
-                  <th>Active</th>
+                  <th>QuestionID</th><th>Level</th><th>Topic</th>
+                  <th>QuestionText</th><th>Answer</th>
+                  <th>Explanation</th><th>TimeLimitSeconds</th><th>Active</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>Q001</td>
-                  <td>Easy</td>
-                  <td>Multiplication</td>
-                  <td>12 × 8 = ?</td>
-                  <td>96</td>
-                  <td>12 × 8 = 96</td>
-                  <td>10</td>
-                  <td>Y</td>
+                  <td>Q001</td><td>Easy</td><td>Multiplication</td>
+                  <td>12 × 8 = ?</td><td>96</td>
+                  <td>12 × 8 = 96</td><td>10</td><td>Y</td>
                 </tr>
               </tbody>
             </table>
             <div class="mini-stats">
-              <div class="mini-stat">Required:<br />QuestionText</div>
-              <div class="mini-stat">Required:<br />Answer</div>
+              <div class="mini-stat">✔ Required<br/>QuestionText</div>
+              <div class="mini-stat">✔ Required<br/>Answer</div>
             </div>
-            <p class="small-note">Optional columns such as Level, Topic, Explanation, TimeLimitSeconds and Active make it easier to filter, explain answers, and control the question bank.</p>
+            <p class="small-note">
+              <b>TimeLimitSeconds</b> in Excel is ignored — the timer always uses
+              <em>Seconds Per Question</em> from Settings. Set <b>Active = N</b> to hide a question.
+            </p>
           </aside>
         </div>
       </section>
 
+      <!-- ░░ GAME SCREEN ░░ -->
       <section id="gameScreen" class="screen">
         <div class="game-layout">
           <div class="card">
@@ -504,7 +426,7 @@
                 <div class="tag" id="topicTag">Topic</div>
                 <p class="small-note" id="questionCounter">Question 1 / 10</p>
               </div>
-              <div id="timerBox" class="timer-box">60s</div>
+              <div id="timerBox" class="timer-box">10s</div>
             </div>
             <div class="progress-wrap">
               <div id="progressBar" class="progress-bar"></div>
@@ -523,18 +445,21 @@
           <aside class="card score-card">
             <h2>Score</h2>
             <div id="liveScore" class="score-number">0/0</div>
-            <p class="small-note">Students answer one question at a time. If time is up, the answer is marked wrong automatically.</p>
-            <button class="btn-light" onclick="restartToSettings()">Back to Settings</button>
+            <p class="small-note">One question at a time. Time up = marked wrong automatically.</p>
+            <button class="btn-light" style="margin-top:16px;" onclick="restartToSettings()">← Back to Settings</button>
           </aside>
         </div>
       </section>
 
+      <!-- ░░ SUMMARY SCREEN ░░ -->
       <section id="summaryScreen" class="screen">
         <div class="card">
           <h2>Practice Summary</h2>
           <div id="finalScore" class="score-number">0/0</div>
-          <button class="btn-primary" onclick="startGame()">Play Again</button>
-          <button class="btn-light" onclick="restartToSettings()">Change Settings</button>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:8px;">
+            <button class="btn-primary" onclick="startGame()">↺ Play Again</button>
+            <button class="btn-light"  onclick="restartToSettings()">⚙ Change Settings</button>
+          </div>
           <div id="summaryList" class="summary-list"></div>
         </div>
       </section>
@@ -542,187 +467,158 @@
   </div>
 
   <script>
-    let allQuestions = [];
+    /* ───── State ───── */
+    let allQuestions  = [];
     let gameQuestions = [];
-    let currentIndex = 0;
-    let timeLeft = 60;
-    let currentMaxSeconds = 60;
-    let timer = null;
-    let results = [];
-    let answered = false;
+    let currentIndex  = 0;
+    let timeLeft      = 10;
+    let maxSeconds    = 10;
+    let timer         = null;
+    let results       = [];
+    let answered      = false;
 
-    const requiredHeaders = ["QuestionText", "Answer"];
+    const requiredHeaders  = ["QuestionText", "Answer"];
     const defaultExcelPath = "q1.xlsx";
 
+    /* ───── Init ───── */
     document.getElementById("excelFile").addEventListener("change", handleExcelUpload);
-    document.getElementById("answerInput").addEventListener("keydown", function (event) {
-      if (event.key === "Enter") {
-        if (answered) nextQuestion();
-        else submitAnswer();
-      }
+    document.getElementById("answerInput").addEventListener("keydown", function (e) {
+      if (e.key === "Enter") { answered ? nextQuestion() : submitAnswer(); }
     });
 
     loadDefaultExcel();
 
-    function parseExcelData(arrayBuffer, preferredSheet = "") {
-      const data = new Uint8Array(arrayBuffer);
-      const workbook = XLSX.read(data, { type: "array" });
-      const sheetToUse = preferredSheet && workbook.Sheets[preferredSheet] ? preferredSheet : workbook.SheetNames[0];
-      const rows = XLSX.utils.sheet_to_json(workbook.Sheets[sheetToUse], { defval: "" });
-
-      if (!rows.length) {
-        setFileStatus("Excel loaded, but no question rows were found.", false);
-        return false;
-      }
-
-      const headers = Object.keys(rows[0]);
-      const missing = requiredHeaders.filter(h => !headers.includes(h));
-      if (missing.length) {
-        setFileStatus("Missing required header(s): " + missing.join(", "), false);
-        return false;
-      }
-
-      allQuestions = rows
-        .filter(row => String(row.Active || "Y").toUpperCase() !== "N")
-        .filter(row => String(row.QuestionText).trim() && String(row.Answer).trim())
-        .map((row, index) => ({
-          id: row.QuestionID || "Q" + String(index + 1).padStart(3, "0"),
-          level: row.Level || "",
-          topic: row.Topic || "General",
-          questionText: String(row.QuestionText),
-          answer: String(row.Answer),
-          explanation: row.Explanation || "",
-          timeLimitSeconds: Number(row.TimeLimitSeconds) || null
-        }));
-
-      updateTopicFilter();
-      document.getElementById("startButton").disabled = allQuestions.length === 0;
-      setFileStatus(`${allQuestions.length} active question(s) loaded from sheet: ${sheetToUse}`, true);
-      return true;
+    /* ───── Helpers ───── */
+    function getSecondsFromSettings() {
+      const val = parseInt(document.getElementById("secondsPerQuestion").value, 10);
+      return isNaN(val) ? 10 : Math.max(3, Math.min(600, val));
     }
 
-    function handleExcelUpload(event) {
-      const file = event.target.files[0];
-      if (!file) return;
-
-      const reader = new FileReader();
-      reader.onload = function (e) {
-        parseExcelData(e.target.result, document.getElementById("sheetName").value.trim());
-      };
-      reader.readAsArrayBuffer(file);
-    }
-
-    function loadDefaultExcel() {
-      setFileStatus("Loading default q1.xlsx...", true);
-      fetch(defaultExcelPath)
-        .then(response => {
-          if (!response.ok) throw new Error("Default file not found");
-          return response.arrayBuffer();
-        })
-        .then(buffer => {
-          const loaded = parseExcelData(buffer, document.getElementById("sheetName").value.trim());
-          if (!loaded) {
-            document.getElementById("startButton").disabled = allQuestions.length === 0;
-          }
-        })
-        .catch(() => {
-          setFileStatus("No Excel file loaded yet. Upload a file or place q1.xlsx in the folder.", false);
-          document.getElementById("startButton").disabled = true;
-        });
+    function updateTimerTag() {
+      document.getElementById("timerTag").textContent = getSecondsFromSettings() + "s Sprint";
     }
 
     function showScreen(id) {
-      document.querySelectorAll(".screen").forEach(screen => screen.classList.remove("active"));
+      document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
       document.getElementById(id).classList.add("active");
     }
 
+    function setFileStatus(message, ok) {
+      const el = document.getElementById("fileStatus");
+      el.innerHTML = message;
+      el.style.color = ok ? "#16a34a" : "#dc2626";
+    }
+
+    /* ───── Excel parsing ───── */
+    function parseWorkbook(arrayBuffer, sourceName) {
+      try {
+        const workbook = XLSX.read(new Uint8Array(arrayBuffer), { type: "array" });
+        const preferred = document.getElementById("sheetName").value.trim();
+        const sheet     = preferred && workbook.Sheets[preferred]
+                          ? preferred : workbook.SheetNames[0];
+        const rows      = XLSX.utils.sheet_to_json(workbook.Sheets[sheet], { defval: "" });
+
+        if (!rows.length) {
+          setFileStatus(`⚠ ${sourceName}: no rows found.`, false);
+          return false;
+        }
+
+        const missing = requiredHeaders.filter(h => !Object.keys(rows[0]).includes(h));
+        if (missing.length) {
+          setFileStatus(`⚠ ${sourceName}: missing column(s): <b>${missing.join(", ")}</b>`, false);
+          return false;
+        }
+
+        allQuestions = rows
+          .filter(r => String(r.Active || "Y").toUpperCase() !== "N")
+          .filter(r => String(r.QuestionText).trim() && String(r.Answer).trim())
+          .map((r, i) => ({
+            id:           r.QuestionID || "Q" + String(i + 1).padStart(3, "0"),
+            level:        r.Level   || "",
+            topic:        r.Topic   || "General",
+            questionText: String(r.QuestionText),
+            answer:       String(r.Answer),
+            explanation:  r.Explanation || ""
+          }));
+
+        updateTopicFilter();
+        setFileStatus(
+          `✔ ${allQuestions.length} active question(s) loaded from <b>${sourceName}</b> (sheet: ${sheet})`,
+          true
+        );
+        return allQuestions.length > 0;
+
+      } catch (err) {
+        setFileStatus(`⚠ Could not read ${sourceName}. Check the file format.`, false);
+        return false;
+      }
+    }
+
+    /* ───── Load from file picker ───── */
     function handleExcelUpload(event) {
       const file = event.target.files[0];
       if (!file) return;
-
       const reader = new FileReader();
-      reader.onload = function (e) {
-        try {
-          const data = new Uint8Array(e.target.result);
-          const workbook = XLSX.read(data, { type: "array" });
-          const preferredSheet = document.getElementById("sheetName").value.trim();
-          const sheetToUse = preferredSheet && workbook.Sheets[preferredSheet] ? preferredSheet : workbook.SheetNames[0];
-          const rows = XLSX.utils.sheet_to_json(workbook.Sheets[sheetToUse], { defval: "" });
-
-          if (!rows.length) {
-            setFileStatus("Excel loaded, but no question rows were found.", false);
-            return;
-          }
-
-          const headers = Object.keys(rows[0]);
-          const missing = requiredHeaders.filter(h => !headers.includes(h));
-          if (missing.length) {
-            setFileStatus("Missing required header(s): " + missing.join(", "), false);
-            return;
-          }
-
-          allQuestions = rows
-            .filter(row => String(row.Active || "Y").toUpperCase() !== "N")
-            .filter(row => String(row.QuestionText).trim() && String(row.Answer).trim())
-            .map((row, index) => ({
-              id: row.QuestionID || "Q" + String(index + 1).padStart(3, "0"),
-              level: row.Level || "",
-              topic: row.Topic || "General",
-              questionText: String(row.QuestionText),
-              answer: String(row.Answer),
-              explanation: row.Explanation || "",
-              timeLimitSeconds: Number(row.TimeLimitSeconds) || null
-            }));
-
-          updateTopicFilter();
-          document.getElementById("startButton").disabled = allQuestions.length === 0;
-          setFileStatus(`${allQuestions.length} active question(s) loaded from sheet: ${sheetToUse}`, true);
-        } catch (error) {
-          setFileStatus("Could not read the Excel file. Please check the format and headers.", false);
-        }
-      };
+      reader.onload = e => parseWorkbook(e.target.result, file.name);
       reader.readAsArrayBuffer(file);
     }
 
-    function setFileStatus(message, ok) {
-      const status = document.getElementById("fileStatus");
-      status.textContent = message;
-      status.style.color = ok ? "#16a34a" : "#dc2626";
+    /* ───── Load default q1.xlsx ───── */
+    function loadDefaultExcel() {
+      setFileStatus("Loading <b>q1.xlsx</b>…", true);
+      fetch(defaultExcelPath)
+        .then(res => {
+          if (!res.ok) throw new Error("not found");
+          return res.arrayBuffer();
+        })
+        .then(buf => parseWorkbook(buf, defaultExcelPath))
+        .catch(() => setFileStatus(
+          "No file uploaded yet — upload an Excel file above, or place <b>q1.xlsx</b> in the same folder as this HTML file.",
+          false
+        ));
     }
 
+    /* ───── Topic filter ───── */
     function updateTopicFilter() {
-      const topicSelect = document.getElementById("topicFilter");
+      const sel    = document.getElementById("topicFilter");
       const topics = [...new Set(allQuestions.map(q => q.topic).filter(Boolean))].sort();
-      topicSelect.innerHTML = '<option value="all">All topics</option>';
-      topics.forEach(topic => {
-        const option = document.createElement("option");
-        option.value = topic;
-        option.textContent = topic;
-        topicSelect.appendChild(option);
+      sel.innerHTML = '<option value="all">All topics</option>';
+      topics.forEach(t => {
+        const opt = document.createElement("option");
+        opt.value = opt.textContent = t;
+        sel.appendChild(opt);
       });
     }
 
-    function shuffle(array) {
-      const copy = [...array];
-      for (let i = copy.length - 1; i > 0; i--) {
+    function shuffle(arr) {
+      const a = [...arr];
+      for (let i = a.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
-        [copy[i], copy[j]] = [copy[j], copy[i]];
+        [a[i], a[j]] = [a[j], a[i]];
       }
-      return copy;
+      return a;
     }
 
-    function getDefaultSeconds() {
-      const raw = document.getElementById("secondsPerQuestion").value;
-      const value = parseInt(raw, 10);
-      if (Number.isNaN(value)) return 60;
-      // clamp between 3 and 600 (allow larger if needed), but UI limits to 60
-      const clamped = Math.max(3, Math.min(600, value));
-      return clamped;
-    }
+    /* ───── Game flow ───── */
+    async function startGame() {
+      if (!allQuestions.length) {
+        setFileStatus("Trying to load <b>q1.xlsx</b>…", true);
+        try {
+          const res = await fetch(defaultExcelPath);
+          if (!res.ok) throw new Error();
+          const ok = parseWorkbook(await res.arrayBuffer(), defaultExcelPath);
+          if (!ok) return;
+        } catch {
+          setFileStatus(
+            "No questions loaded. Upload an Excel file or add q1.xlsx to the same folder.",
+            false
+          );
+          return;
+        }
+      }
 
-    function startGame() {
-      const topic = document.getElementById("topicFilter").value;
-      const count = Number(document.getElementById("questionCount").value) || 10;
+      const topic  = document.getElementById("topicFilter").value;
+      const count  = parseInt(document.getElementById("questionCount").value, 10) || 10;
       const random = document.getElementById("randomOrder").value === "yes";
 
       let pool = topic === "all" ? [...allQuestions] : allQuestions.filter(q => q.topic === topic);
@@ -730,12 +626,12 @@
       gameQuestions = pool.slice(0, count);
 
       if (!gameQuestions.length) {
-        alert("No questions available for this setting.");
+        alert("No questions match the current filter. Please adjust the topic or upload a different file.");
         return;
       }
 
       currentIndex = 0;
-      results = [];
+      results      = [];
       showScreen("gameScreen");
       loadQuestion();
     }
@@ -744,21 +640,23 @@
       clearInterval(timer);
       answered = false;
 
-      const q = gameQuestions[currentIndex];
-      const defaultSeconds = getDefaultSeconds();
-      currentMaxSeconds = q.timeLimitSeconds || defaultSeconds;
-      timeLeft = currentMaxSeconds;
+      // Always read timer from Settings — single source of truth
+      maxSeconds = getSecondsFromSettings();
+      timeLeft   = maxSeconds;
 
-      document.getElementById("questionText").textContent = q.questionText;
-      document.getElementById("topicTag").textContent = q.topic;
-      document.getElementById("questionCounter").textContent = `Question ${currentIndex + 1} / ${gameQuestions.length}`;
-      document.getElementById("answerInput").value = "";
-      document.getElementById("answerInput").disabled = false;
+      const q = gameQuestions[currentIndex];
+      document.getElementById("questionText").textContent    = q.questionText;
+      document.getElementById("topicTag").textContent        = q.topic;
+      document.getElementById("questionCounter").textContent =
+        `Question ${currentIndex + 1} / ${gameQuestions.length}`;
+
+      document.getElementById("answerInput").value           = "";
+      document.getElementById("answerInput").disabled        = false;
       document.getElementById("answerInput").focus();
-      document.getElementById("submitButton").style.display = "inline-block";
-      document.getElementById("nextButton").style.display = "none";
-      document.getElementById("feedbackBox").className = "feedback";
-      document.getElementById("feedbackBox").textContent = "";
+      document.getElementById("submitButton").style.display  = "inline-block";
+      document.getElementById("nextButton").style.display    = "none";
+      document.getElementById("feedbackBox").className       = "feedback";
+      document.getElementById("feedbackBox").textContent     = "";
 
       updateTimerDisplay();
       updateLiveScore();
@@ -766,14 +664,12 @@
       timer = setInterval(() => {
         timeLeft--;
         updateTimerDisplay();
-        if (timeLeft <= 0) {
-          submitAnswer(true);
-        }
+        if (timeLeft <= 0) submitAnswer(true);
       }, 1000);
     }
 
-    function normalize(value) {
-      return String(value).trim().replace(/\s+/g, "").toLowerCase();
+    function normalize(v) {
+      return String(v).trim().replace(/\s+/g, "").toLowerCase();
     }
 
     function submitAnswer(timeout = false) {
@@ -781,71 +677,69 @@
       answered = true;
       clearInterval(timer);
 
-      const q = gameQuestions[currentIndex];
+      const q          = gameQuestions[currentIndex];
       const userAnswer = timeout ? "—" : document.getElementById("answerInput").value;
-      const correct = !timeout && normalize(userAnswer) === normalize(q.answer);
+      const correct    = !timeout && normalize(userAnswer) === normalize(q.answer);
 
       results.push({
         questionText: q.questionText,
         userAnswer,
         correctAnswer: q.answer,
-        explanation: q.explanation,
+        explanation:  q.explanation,
         correct,
-        topic: q.topic,
+        topic:   q.topic,
         timeout
       });
 
-      const feedback = document.getElementById("feedbackBox");
-      feedback.className = "feedback show " + (correct ? "correct" : "wrong");
-      feedback.innerHTML = correct
-        ? "Correct!"
-        : `${timeout ? "Time is up." : "Not quite."} Correct answer: <b>${q.answer}</b>${q.explanation ? "<br>" + q.explanation : ""}`;
+      const fb = document.getElementById("feedbackBox");
+      fb.className = "feedback show " + (correct ? "correct" : "wrong");
+      fb.innerHTML = correct
+        ? "✓ Correct!"
+        : `${timeout ? "⏰ Time is up." : "✗ Not quite."} Correct answer: <b>${q.answer}</b>`
+          + (q.explanation ? `<br><span style="font-weight:400;">${q.explanation}</span>` : "");
 
-      document.getElementById("answerInput").disabled = true;
+      document.getElementById("answerInput").disabled       = true;
       document.getElementById("submitButton").style.display = "none";
-      document.getElementById("nextButton").style.display = "inline-block";
+      document.getElementById("nextButton").style.display   = "inline-block";
       updateLiveScore();
     }
 
     function nextQuestion() {
-      if (currentIndex + 1 >= gameQuestions.length) {
-        showSummary();
-        return;
-      }
+      if (currentIndex + 1 >= gameQuestions.length) { showSummary(); return; }
       currentIndex++;
       loadQuestion();
     }
 
     function updateTimerDisplay() {
-      const timerBox = document.getElementById("timerBox");
-      const maxSeconds = currentMaxSeconds || getDefaultSeconds();
-      timerBox.textContent = timeLeft + "s";
-      timerBox.classList.toggle("danger", timeLeft <= 3);
-      document.getElementById("progressBar").style.width = Math.max(0, (timeLeft / maxSeconds) * 100) + "%";
+      const box = document.getElementById("timerBox");
+      box.textContent = timeLeft + "s";
+      box.classList.toggle("danger", timeLeft <= 3);
+      document.getElementById("progressBar").style.width =
+        Math.max(0, (timeLeft / maxSeconds) * 100) + "%";
     }
 
     function updateLiveScore() {
-      const score = results.filter(r => r.correct).length;
-      document.getElementById("liveScore").textContent = `${score}/${results.length}`;
+      const s = results.filter(r => r.correct).length;
+      document.getElementById("liveScore").textContent = `${s}/${results.length}`;
     }
 
     function showSummary() {
       clearInterval(timer);
       showScreen("summaryScreen");
       const score = results.filter(r => r.correct).length;
-      document.getElementById("finalScore").textContent = `${score}/${gameQuestions.length}`;
+      document.getElementById("finalScore").textContent = `${score} / ${gameQuestions.length}`;
 
       const list = document.getElementById("summaryList");
       list.innerHTML = "";
-      results.forEach((r, index) => {
+      results.forEach((r, i) => {
         const item = document.createElement("div");
         item.className = "summary-item";
         item.innerHTML = `
-          <div><b>${index + 1}. ${r.questionText}</b><br><span class="small-note">${r.topic}</span></div>
+          <div><b>${i + 1}. ${r.questionText}</b><br>
+               <span class="small-note">${r.topic}</span></div>
           <div>Your: <b>${r.userAnswer}</b></div>
           <div>Answer: <b>${r.correctAnswer}</b></div>
-          <div class="${r.correct ? "ok" : "no"}">${r.correct ? "✓" : "✕"}</div>
-        `;
+          <div class="${r.correct ? "ok" : "no"}">${r.correct ? "✓" : "✕"}</div>`;
         list.appendChild(item);
       });
     }
