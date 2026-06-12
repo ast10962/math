@@ -813,8 +813,8 @@
 
     function updateTimerDisplay() {
       const q = gameQuestions[currentIndex];
-      const defaultSeconds = Number(document.getElementById("secondsPerQuestion").value) || 10;
-      const maxSeconds = q.timeLimitSeconds || defaultSeconds;
+      const defaultSeconds = getDefaultSeconds();
+      const maxSeconds = q && (q.timeLimitSeconds || defaultSeconds);
       const timerBox = document.getElementById("timerBox");
       timerBox.textContent = timeLeft + "s";
       timerBox.classList.toggle("danger", timeLeft <= 3);
